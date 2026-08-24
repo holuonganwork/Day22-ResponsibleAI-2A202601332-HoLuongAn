@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Hoc Vien 2A202601116",
+    "student_id": "2A202601116",
+    "group_id": "GROUP-EDU",
+    "submitted_at": "2026-08-24T22:55:00+07:00"
+  },
+  "industry": "education-ai-tutor",
+  "product_context": {
+    "product_name": "EduMentor AI",
+    "product_stage": "pilot",
+    "problem_statement": "Hoc sinh pho thong Viet Nam thieu tro giang ca nhan hoa ngoai gio hoc, dan den chenh lech tiep can giua thanh thi va nong thon va giam dong luc tu hoc.",
+    "target_users": ["hoc sinh pho thong", "giao vien", "phu huynh"],
+    "value_hypothesis": "Tro ly AI goi y lo trinh hoc va huong dan giai bai tap theo chuong trinh GDPT co the tang ty le hoan thanh bai tap va giam thoi gian cho phan hoi cua hoc sinh tu 24 gio xuong duoi 5 phut.",
+    "in_scope": ["goi y buoc giai bai tap", "giai dap thac mac mon hoc theo SGK", "de xuat bai luyen tap phu hop trinh do"],
+    "non_goals": ["cham diem chinh thuc", "quyet dinh xep lop hoac len lop", "thay the giao vien", "tu van tam ly hoac suc khoe"],
+    "user_journey_moment": "Sau khi hoc sinh hoan thanh bai hoc tren lop va truoc khi nop bai tap ve nha",
+    "target_launch_or_review_date": "2027-01-15",
+    "automation_level": "recommendation",
+    "fallback_experience": "Khi AI khong kha dung hoac khong chac chan ve cau tra loi, hoc sinh duoc chuyen den dien dan hoi dap co giao vien truc va hien thi thong bao ro rang rang AI dang tam ngung.",
+    "decision_reversibility": "reversible"
+  },
+  "system_profile": {
+    "purpose": "Ho tro hoc sinh pho thong tu hoc bang cach goi y buoc giai, giai dap thac mac va de xuat bai luyen tap theo chuong trinh GDPT, khong cham diem hay quyet dinh hoc vu.",
+    "user_groups": ["hoc sinh pho thong", "giao vien giam sat", "phu huynh"],
+    "decision_impact": "Goi y hoc tap anh huong den phuong phap va noi dung hoc sinh tiep can, co the tao lech lac kien thuc neu noi dung sai hoac thien lech, nhung khong truc tiep quyet dinh diem so hay xep lop.",
+    "data_types": ["cau hoi va bai lam cua hoc sinh", "lich su tuong tac hoc tap", "metadata lop hoc va mon hoc", "noi dung sach giao khoa da so hoa"],
+    "deployment_context": "Ung dung web va mobile do nha truong cap tai khoan cho hoc sinh lop 6-12, giao vien co dashboard giam sat, van hanh tren cloud tai Viet Nam.",
+    "target_markets": ["Vietnam", "European Union"],
+    "system_boundary": {
+      "model": "Large language model fine-tuned on GDPT curriculum with retrieval-augmented generation from vetted textbook database",
+      "application": "Web and mobile application with chat interface and teacher monitoring dashboard and parent control panel",
+      "people": ["hoc sinh", "giao vien giam sat", "phu huynh", "doi ngu noi dung giao duc", "quan tri vien truong hoc"],
+      "vendors": ["LLM provider", "cloud hosting provider", "digitized textbook content partner"],
+      "upstream_inputs": ["GDPT curriculum and vetted textbooks", "student questions", "class metadata"],
+      "downstream_decisions": ["suggest next solution step", "recommend practice exercises", "alert teacher when student struggles persistently"]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 4,
+    "high_stakes": 4,
+    "sensitive_data": 4,
+    "affected_scale": 4,
+    "human_review_need": 4,
+    "rationale": "AI tutor directly impacts learning of children and adolescents who are a vulnerable population. Incorrect content can create lasting knowledge distortion. Learning behavior data of minors is sensitive under both Vietnamese and EU law. School-scale deployment can affect thousands of students. Teachers must retain authority to supervise intervene and pause AI because students lack the ability to independently evaluate recommendation quality."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "high-risk",
+      "rationale": "Decision 33/2026/QD-TTg explicitly designates AI systems in education as high-risk including self-learning content systems. EduMentor AI falls under this category and must achieve full regulatory compliance before the 2027-09-01 transition deadline.",
+      "source_ids": ["SRC-05", "SRC-06"]
+    },
+    "eu": {
+      "status": "high-risk",
+      "rationale": "EU AI Act Annex III point 3 classifies AI in education and vocational training as high-risk including systems that evaluate learning outcomes and steer learning processes. Exact obligation dates and provider-deployer role analysis require current legal review.",
+      "source_ids": ["SRC-07"]
+    },
+    "other_markets": "Not assessed for markets outside Vietnam and the European Union. Separate legal counsel review is required before expansion.",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "Homework completion rate increases by at least 15 percentage points compared to control group within the first 3 months of pilot deployment.",
+    "risk_kri": "Rate of AI suggestions rated as incorrect or misleading by teachers remains at or below 2 percent in each monthly evaluation period.",
+    "guardrail_metric": "Zero instances of age-inappropriate content or health and psychological advice or AI claiming to be an official teacher in any production reporting period.",
+    "review_cadence": "Monthly and before any change to model or data or vendor or subject scope or target age group."
+  },
+  "release_decision": {
+    "accountable_product_owner": "Education Product Owner",
+    "risk_acceptance_owner": "Head of Education Technology",
+    "independent_reviewer": "Responsible AI Review Board",
+    "decision": "conditional-go",
+    "release_blockers": ["GAP-01: Vietnam high-risk classification compliance not yet completed with registration and conformity assessment", "GAP-02: EU high-risk compliance evidence not yet independently verified"],
+    "release_conditions": ["zero age-inappropriate content in all test periods", "signed launch evidence pack including risk assessment and human oversight procedure", "teacher can pause AI for any student at any time", "named on-call escalation owner for content incidents"],
+    "next_review_trigger": "Review on any threshold breach or content incident or vendor change or model update or subject scope expansion or new target age group or before 2027-04-15 whichever comes first.",
+    "residual_risk_rationale": "Use is limited to recommendations and does not grade or make academic decisions. Teachers supervise and can pause at any time. Content is grounded from vetted textbooks via RAG. Deployment stops immediately if error rate exceeds threshold or inappropriate content is detected."
+  }
+}
