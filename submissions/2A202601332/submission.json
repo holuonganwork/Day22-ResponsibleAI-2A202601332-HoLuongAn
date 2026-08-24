@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Học viên 2A202601332",
+    "student_id": "2A202601332",
+    "group_id": "GROUP-01",
+    "submitted_at": "2026-08-24T19:15:00Z"
+  },
+  "industry": "education-ai-tutor",
+  "product_context": {
+    "product_name": "MathGenius AI Tutor",
+    "product_stage": "pilot",
+    "problem_statement": "Học sinh THPT lớp 10-12 gặp khó khăn khi tự giải bài tập Toán tại nhà do thiếu gia sư kèm cặp 1-1 kịp thời; các em dễ mất động lực hoặc lạm dụng công cụ giải bài tự động thiếu tư duy sư phạm dẫn đến hổng kiến thức căn bản.",
+    "target_users": [
+      "Học sinh THPT lớp 10-12",
+      "Giáo viên bộ môn Toán THPT",
+      "Phụ huynh học sinh theo dõi tiến độ"
+    ],
+    "value_hypothesis": "Giúp học sinh lấp lỗ hổng kiến thức môn Toán thông qua phương pháp Socratic gợi mở và tiết kiệm thời gian giải đáp thắc mắc ngoài giờ của giáo viên. Mức cải thiện cụ thể cần được đo lường và xác nhận qua pilot 8 tuần trước khi đưa vào KPI chính thức.",
+    "in_scope": [
+      "Gợi ý từng bước giải bài tập Toán THPT theo phương pháp Socratic gợi mở (không giải hộ đáp án cuối cùng)",
+      "Nhận diện đề bài toán học qua văn bản và hình ảnh chụp (Math OCR)",
+      "Đánh giá mức độ nắm vững khái niệm qua câu hỏi kiểm tra nhanh tương tác",
+      "Bảng điều khiển (Dashboard) phân tích tiến độ tự học cho giáo viên và phụ huynh"
+    ],
+    "non_goals": [
+      "Không giải hộ toàn bộ đề bài thi hoặc bài kiểm tra trực tuyến",
+      "Không thay thế giáo viên trong việc giảng dạy chính khóa và chấm điểm học bạ",
+      "Không hỗ trợ các môn học ngoài phạm vi chương trình Toán THPT chuẩn",
+      "Không thu thập hoặc sử dụng dữ liệu sinh trắc học khuôn mặt của học sinh"
+    ],
+    "user_journey_moment": "Học sinh tự học bài tập về nhà môn Toán vào buổi tối, chụp ảnh bài toán chưa hiểu và gửi vào hệ thống để nhận câu hỏi gợi mở tư duy bước giải tiếp theo.",
+    "target_launch_or_review_date": "2026-10-15",
+    "automation_level": "recommendation",
+    "fallback_experience": "Khi AI có độ tin cậy thấp dưới 85% hoặc Symbolic Math Engine phát hiện bước giải không xác minh được, hệ thống tự động khóa gợi ý, chuyển câu hỏi sang hàng đợi trợ giảng/giáo viên phản hồi trong 12h và gợi ý học sinh xem video bài giảng mẫu chuẩn.",
+    "decision_reversibility": "partially-reversible"
+  },
+  "system_profile": {
+    "purpose": "Cung cấp hệ thống gia sư AI cá nhân hóa hỗ trợ học sinh tự học môn Toán theo định hướng gợi mở sư phạm và phân tích dữ liệu học tập cho nhà trường.",
+    "user_groups": [
+      "Học sinh THPT 15-18 tuổi",
+      "Giáo viên bộ môn Toán",
+      "Phụ huynh học sinh",
+      "Trợ giảng trực tuyến"
+    ],
+    "decision_impact": "Ảnh hưởng trực tiếp đến năng lực tư duy toán học, kết quả học tập của học sinh, sự công bằng trong tiếp cận giáo dục chất lượng cao và tâm lý tự chủ học tập. Nếu học sinh tiếp thu kiến thức sai trong nhiều tuần, hậu quả về lỗ hổng tư duy chỉ có thể khắc phục một phần qua can thiệp sư phạm bổ sung.",
+    "data_types": [
+      "Đề bài toán dạng text và ảnh chụp",
+      "Lịch sử hội thoại hỏi đáp và lời giải nháp của học sinh",
+      "Kết quả làm bài tập tự luyện và điểm đánh giá định kỳ",
+      "Dữ liệu định danh tài khoản học sinh và email phụ huynh"
+    ],
+    "deployment_context": "Ứng dụng Mobile App (iOS/Android) và Web Portal tích hợp hệ thống quản lý học tập LMS của các trường THPT.",
+    "target_markets": [
+      "Vietnam",
+      "Southeast Asia"
+    ],
+    "system_boundary": {
+      "model": "Multimodal LLM Fine-tuned for Vietnamese High School Mathematics (Llama-3-70B + Math-CoT-VN)",
+      "application": "React Native Mobile Client, Next.js Web Dashboard, FastAPI Backend, Mathpix OCR Engine",
+      "people": [
+        "Học sinh THPT",
+        "Giáo viên Toán bộ môn",
+        "Trợ giảng trực fallback",
+        "Ban cố vấn sư phạm và an toàn AI"
+      ],
+      "vendors": [
+        "Cloud GPU Hosting Provider (AWS/GCP)",
+        "Mathpix OCR Service",
+        "Open-source Foundation Model Host"
+      ],
+      "upstream_inputs": [
+        "Ảnh chụp bài tập từ học sinh",
+        "Văn bản câu hỏi tương tác",
+        "Chương trình khung GDPT 2018 môn Toán",
+        "Ngân hàng câu hỏi và bài giải chuẩn hóa từ Bộ GD&ĐT"
+      ],
+      "downstream_decisions": [
+        "Gợi ý bước tư duy giải bài toán tiếp theo",
+        "Đề xuất bài tập ôn luyện cá nhân hóa theo lỗ hổng kiến thức",
+        "Báo cáo cảnh báo học sinh có nguy cơ phụ thuộc AI gửi giáo viên"
+      ]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 3,
+    "high_stakes": 3,
+    "sensitive_data": 3,
+    "affected_scale": 4,
+    "human_review_need": 4,
+    "rationale": "Hệ thống MathGenius AI Tutor được đánh giá rủi ro ở mức trung bình-cao: (1) Harm severity = 3: nghiên cứu GSM-Symbolic (SRC-03) chứng minh LLM suy giảm hiệu suất tới 65% khi có thông tin nhiễu, ảo giác toán học có thể gây lệch lạc tư duy logic nhưng hậu quả không đe dọa tính mạng; (2) High stakes = 3: tác động trực tiếp đến kết quả học tập và cơ hội thi cử dù không trực tiếp chấm điểm học bạ; (3) Sensitive data = 3: xử lý dữ liệu học tập và ảnh vở bài tập của người học dưới 18 tuổi thuộc phạm vi điều chỉnh của Luật BVDLCN 2025; (4) Affected scale = 4: quy mô pilot 1.000 học sinh có kế hoạch mở rộng hàng chục ngàn; (5) Human review need = 4: Chegg Q3/2024 và khảo sát Intelligent.com (SRC-08, SRC-09) cho thấy xu hướng over-reliance rõ rệt, đòi hỏi giáo viên can thiệp giám sát. Snapshot này phục vụ phân loại kiểm soát nội bộ và không thay thế phân loại pháp lý."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "Tại Việt Nam, Luật AI 134/2025/QH15 (có hiệu lực 01/03/2026) thiết lập khung phân loại rủi ro ba cấp. QĐ 33/2026/QĐ-TTg liệt kê 3 hệ thống giáo dục trong danh mục 46 hệ thống AI rủi ro cao, bao gồm hệ thống chấm điểm tự động và hệ thống nội dung tự học trên dữ liệu không kiểm soát. Cần đánh giá pháp lý chính thức để xác định sản phẩm có thuộc danh mục rủi ro cao hay không, vì MathGenius gợi ý bước giải (không chấm điểm) nhưng có dashboard đánh giá năng lực gửi giáo viên. Ngoài ra, sản phẩm xử lý dữ liệu người học vị thành niên thuộc phạm vi Luật BVDLCN 2025 (thay thế NĐ 13/2023). Thời hạn chuyển tiếp cho lĩnh vực giáo dục là đến 09/2027.",
+      "source_ids": [
+        "SRC-05",
+        "SRC-06"
+      ]
+    },
+    "eu": {
+      "status": "high-risk",
+      "rationale": "Theo Regulation (EU) 2024/1689 (EU AI Act), Phụ lục III Mục 3 xếp hệ thống AI đánh giá kết quả học tập hoặc định hướng lộ trình học tập vào loại rủi ro cao theo Điều 6(2). MathGenius có tính năng dashboard đánh giá lỗ hổng kiến thức và đề xuất bài tập ôn luyện cá nhân hóa, thuộc phạm vi 'evaluate learning outcomes' và 'steer the learning process'. Sản phẩm bắt buộc phải có hệ thống quản trị rủi ro, kiểm toán dữ liệu và Human Oversight theo Điều 14 trước khi tiếp cận thị trường EU.",
+      "source_ids": [
+        "SRC-07"
+      ]
+    },
+    "other_markets": "Đối với thị trường Đông Nam Á (Singapore, Thái Lan), sản phẩm áp dụng ASEAN Guide on AI Governance and Ethics với trọng tâm tính minh bạch và bảo vệ quyền riêng tư người học. Cần tư vấn pháp lý riêng cho từng thị trường trước khi mở rộng.",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "Median thời gian từ khi học sinh gửi câu hỏi đến khi nhận gợi ý Socratic đầu tiên dưới 30 giây; tỷ lệ học sinh tự giải thành công bài toán tiếp theo (next-item correctness) sau khi sử dụng gợi ý AI đạt tối thiểu 60% trong pilot 8 tuần; tỷ lệ hài lòng sư phạm của giáo viên >= 80%.",
+    "risk_kri": "Tỷ lệ bước giải bị gắn cờ sai sót toán học (Mathematical Error Flag Rate) vượt quá 2% tổng số phiên tương tác trong 7 ngày hoặc tỷ lệ học sinh bypass Socratic Guardrail vượt quá 10% tổng số phiên.",
+    "guardrail_metric": "Số sự cố rò rỉ PII trẻ em phải bằng 0 trong mọi chu kỳ báo cáo; nếu phát hiện 1 sự cố lập tức tạm dừng hệ thống và kích hoạt quy trình ứng phó sự cố. Tỷ lệ ảo giác toán học không được phát hiện bởi Symbolic Engine trên tập benchmark nội bộ phải dưới 5%; nếu vượt ngưỡng thì đóng băng model version và rollback.",
+    "review_cadence": "Rà soát định kỳ hàng tháng (Monthly Risk Review) và kích hoạt review đột xuất khi: (a) thay đổi mô hình nền tảng hoặc fine-tuning dataset, (b) cập nhật chương trình GDPT, (c) KRI vượt ngưỡng, (d) thay đổi vendor hoặc thị trường mục tiêu."
+  },
+  "release_decision": {
+    "accountable_product_owner": "Head of Education Products",
+    "risk_acceptance_owner": "Chief Product and AI Safety Officer",
+    "independent_reviewer": "Lead Pedagogical Auditor and External AI Safety Reviewer",
+    "decision": "conditional-go",
+    "release_blockers": [
+      "GAP-01: Hoàn thành kiểm thử PII Redaction F1 >= 99.5%",
+      "GAP-02: Tích hợp Symbolic Math Verification Engine đạt benchmark >= 95%",
+      "GAP-04: Hoàn thành đánh giá phân loại rủi ro theo Luật AI 134/2025/QH15 và QĐ 33/2026/QĐ-TTg"
+    ],
+    "release_conditions": [
+      "Chỉ triển khai giới hạn Pilot 1.000 học sinh tại 5 trường THPT đối tác có giáo viên bộ môn tham gia giám sát",
+      "Bắt buộc tối thiểu 2 trợ giảng trực tuyến theo dõi hàng đợi fallback trong khung giờ 19h-22h",
+      "Dữ liệu nhật ký tương tác xóa tự động sau 30 ngày và kiểm toán độc lập",
+      "Vendor phải ký Data Escrow Agreement và cam kết bảo vệ dữ liệu trẻ em trước khi triển khai"
+    ],
+    "next_review_trigger": "Ngày 2026-09-30 hoặc khi kết thúc giai đoạn Pilot 8 tuần hoặc khi KRI vượt ngưỡng hoặc khi có thay đổi vendor/model.",
+    "residual_risk_rationale": "Rủi ro còn lại ở mức chấp nhận được trong phạm vi Pilot hẹp: model vẫn có thể gặp khó khăn với bài toán hình học cực khó hoặc diễn đạt đề bất thường (GSM-Symbolic cho thấy LLM nhạy cảm với biến thể đề bài), nhưng rủi ro được giảm thiểu nhờ: (a) Symbolic Math Engine xác minh từng bước, (b) Socratic scaffolding không đưa đáp án cuối, (c) hàng đợi fallback có trợ giảng trực, (d) giáo viên có quyền ghi đè 100%. Sự kiện LAUSD/AllHere (SRC-04) là bài học về vendor risk, được giảm thiểu qua Data Escrow clause và multi-cloud fallback."
+  }
+}
