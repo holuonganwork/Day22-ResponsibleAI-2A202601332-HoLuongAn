@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "student_name": "Tran Chi Hien",
+    "student_id": "2A202601162",
+    "group_id": "TEAM MOI",
+    "submitted_at": "2026-08-24T00:00:00+07:00"
+  },
+  "industry": "media-news-social-political-assistant",
+  "product_context": {
+    "product_name": "Bản Tin AI Cá Nhân Hóa",
+    "product_stage": "pilot",
+    "problem_statement": "Người dùng app tin tức bị ngợp bởi hàng trăm bài mỗi ngày, thường chỉ đọc tiêu đề giật gân, bỏ lỡ tin quan trọng về chính trị - xã hội.",
+    "target_users": ["người dùng ứng dụng tin tức", "độc giả tin tức thông thường"],
+    "value_hypothesis": "Bản tin AI cá nhân hóa giúp người dùng nắm tin quan trọng trong dưới 5 phút mỗi ngày, tăng tần suất mở app mà không cần đọc hết bài gốc.",
+    "in_scope": ["tóm tắt bài viết từ nhà xuất bản đã cấp phép", "cá nhân hóa chủ đề theo sở thích người dùng", "gửi bản tin qua push notification và feed trong app"],
+    "non_goals": ["tự viết tin tức gốc", "fact-check vượt ra ngoài nội dung bài gốc", "tạo ảnh/video minh họa bằng AI", "đưa quan điểm hoặc ủng hộ chính trị"],
+    "user_journey_moment": "Khi người dùng mở app buổi sáng và xem feed \"Hôm nay\" cá nhân hóa",
+    "target_launch_or_review_date": "2026-11-16",
+    "automation_level": "semi-automated",
+    "fallback_experience": "Khi AI lỗi hoặc bị tạm dừng, app hiển thị danh sách tiêu đề gốc theo thời gian, không có tóm tắt AI.",
+    "decision_reversibility": "partially-reversible"
+  },
+  "system_profile": {
+    "purpose": "Tự động tóm tắt tin tức hàng ngày - gồm cả tin chính trị và xã hội - theo chủ đề mà mỗi người dùng quan tâm.",
+    "user_groups": ["người dùng ứng dụng", "đội biên tập/nội dung", "đội kiểm duyệt nội dung"],
+    "decision_impact": "Quyết định tin nào và góc nhìn nào về sự kiện chính trị - xã hội được người dùng đọc đầu tiên mỗi ngày.",
+    "data_types": ["sở thích chủ đề của người dùng", "lịch sử đọc/tương tác", "nội dung bài viết từ nhà xuất bản đã cấp phép"],
+    "deployment_context": "Ứng dụng tin tức tiêu dùng, dùng LLM API của bên thứ ba để tóm tắt nội dung từ nhà xuất bản đã cấp phép.",
+    "target_markets": ["Việt Nam", "Liên minh Châu Âu"],
+    "system_boundary": {
+      "model": "LLM API bên thứ ba, dùng để tóm tắt văn bản",
+      "application": "feed \"Hôm nay\" và push notification trong app tin tức",
+      "people": ["độc giả", "đội biên tập/nội dung", "product owner", "người kiểm duyệt trực (on-call)"],
+      "vendors": ["nhà cung cấp LLM API", "đối tác cấp phép nội dung tin tức"],
+      "upstream_inputs": ["nội dung bài viết đã cấp phép", "chủ đề người dùng khai báo quan tâm", "lịch sử tương tác/click"],
+      "downstream_decisions": ["tin nào hiển thị trước", "góc nhìn nào của sự kiện được đọc", "có gửi push notification hay không"]
+    }
+  },
+  "industry_risk_snapshot": {
+    "harm_severity": 5,
+    "high_stakes": 3,
+    "sensitive_data": 4,
+    "affected_scale": 4,
+    "human_review_need": 5,
+    "rationale": "Dựa trên case Gemini/Grok/ChatGPT (SRC-01 đến SRC-06): nội dung sai lệch về chính trị - xã hội có thể gây hại nghiêm trọng đến nhận thức công chúng ở quy mô lớn, nên cần mức giám sát con người cao nhất, dù bản thân quyết định hiển thị bản tin vẫn có thể điều chỉnh hoặc rút lại sau khi phát hiện lỗi."
+  },
+  "legal_classification": {
+    "vietnam": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "Sản phẩm tự động tạo tóm tắt tin chính trị - xã hội, có thể chịu ràng buộc của Luật AI 134/2025/QH15 và danh mục rủi ro cao (Quyết định 33/2026); chưa đủ căn cứ để tự phân loại chính xác, cần luật sư rà soát trước khi mở rộng ngoài pilot.",
+      "source_ids": ["SRC-07"]
+    },
+    "eu": {
+      "status": "uncertain-requires-legal-review",
+      "rationale": "Nội dung AI tạo liên quan tin chính trị - xã hội có thể thuộc nghĩa vụ minh bạch nội dung AI-generated theo EU AI Act; chưa rõ có rơi vào nhóm high-risk (Annex III, tiến trình dân chủ) hay chỉ limited-transparency, cần luật sư EU xác nhận.",
+      "source_ids": ["SRC-08"]
+    },
+    "other_markets": "Not assessed - chỉ đánh giá Việt Nam và EU trong phạm vi pilot này.",
+    "legal_review_required": true
+  },
+  "product_metrics": {
+    "success_kpi": "Tỉ lệ người dùng đọc hết bản tin AI mỗi ngày (completion rate) đạt tối thiểu 40% trong 60 ngày sau pilot.",
+    "risk_kri": "Tỉ lệ tóm tắt bị gắn cờ sai lệch chính trị - xã hội (do biên tập hoặc người dùng report) dưới 0.5% mỗi tuần.",
+    "guardrail_metric": "Số bản tin chứa cáo buộc sai về cá nhân hoặc tổ chức có thật được publish mà chưa qua duyệt pháp lý phải luôn bằng 0, không đánh đổi lấy tốc độ ra tin.",
+    "review_cadence": "Hàng tuần trong giai đoạn pilot, hàng tháng sau khi ổn định; review ngay khi có sự cố lan truyền công khai, đổi vendor LLM, hoặc mở thị trường mới."
+  },
+  "release_decision": {
+    "accountable_product_owner": "Product Owner - Bản Tin AI",
+    "risk_acceptance_owner": "Head of Product / Trust & Safety",
+    "independent_reviewer": "Responsible AI Review Board",
+    "decision": "conditional-go",
+    "release_blockers": ["GAP-01: chưa bắt buộc trích dẫn nguồn cụ thể và fact-consistency check cho tóm tắt chính trị - xã hội", "GAP-02: chưa có approval 2 người (kỹ thuật + PM) cho thay đổi prompt/config production", "GAP-03: chưa có named-entity consistency check và duyệt pháp lý thủ công cho bản tin nhắc tên cá nhân/tổ chức"],
+    "release_conditions": ["Cả 3 gap must (GAP-01, GAP-02, GAP-03) chuyển sang status done kèm evidence ký xác nhận", "Không có sự cố nghiêm trọng nào trong 2 tuần dogfooding nội bộ trước khi mở pilot"],
+    "next_review_trigger": "Review ngay khi: bất kỳ gap must nào chuyển done, có sự cố lan truyền công khai, đổi vendor LLM, hoặc đến ngày 2026-11-16.",
+    "residual_risk_rationale": "Dù 3 gap must hoàn thành, residual risk vẫn ở mức 3-4/5 cho nội dung chính trị - xã hội và hallucination về cá nhân, nên cần duy trì human oversight liên tục và guardrail cứng, không coi rủi ro đã về 0."
+  }
+}
